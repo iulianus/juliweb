@@ -1,0 +1,34 @@
+---
+import Landing from '../components/Landing.astro';
+import '../styles/landing.css';
+import '../styles/embedded.css';
+import '../styles/editorial.css';
+import faq from '../data/faq.json';
+const canonical = new URL(import.meta.env.BASE_URL, Astro.site).href;
+const image = new URL(import.meta.env.BASE_URL + 'images/julian-retrato-web.png', Astro.site).href;
+const title = 'Diseño web, SEO y WordPress | Juliweb — Julián Aguirre';
+const description = 'Diseño, contenido y posicionamiento para convertir tu web en una herramienta de negocio. WordPress, SEO y mantenimiento para pymes, profesionales y agencias.';
+const schema = {'@context':'https://schema.org','@graph':[
+ {'@type':'WebSite','@id':canonical+'#website',url:canonical,name:'Juliweb',inLanguage:'es-AR'},
+ {'@type':'Person','@id':canonical+'#julian',name:'Julián Aguirre',url:canonical,image,jobTitle:'Comunicador digital y consultor WordPress'},
+ {'@type':'WebPage','@id':canonical+'#webpage',url:canonical,name:title,description,inLanguage:'es-AR',isPartOf:{'@id':canonical+'#website'},about:{'@id':canonical+'#julian'}},
+ {'@type':'FAQPage',mainEntity:faq.map(item=>({'@type':'Question',name:item.q,acceptedAnswer:{'@type':'Answer',text:item.a}}))}
+]};
+---
+<!doctype html>
+<html lang="es-AR">
+ <head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title><meta name="description" content={description} /><link rel="canonical" href={canonical} />
+  <meta name="robots" content="index, follow" /><meta name="theme-color" content="#152A47" />
+  <link rel="icon" type="image/png" href={import.meta.env.BASE_URL+'images/juliweb-logo.png'} />
+  <meta property="og:type" content="website" /><meta property="og:locale" content="es_AR" /><meta property="og:site_name" content="Juliweb" />
+  <meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} />
+  <meta property="og:image" content={image} /><meta property="og:image:alt" content="Julián Aguirre — Juliweb" />
+  <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={title} /><meta name="twitter:description" content={description} /><meta name="twitter:image" content={image} />
+  <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\u003c')} />
+ </head>
+ <body><a class="skip-link" href="#contenido">Saltar al contenido</a><main id="contenido"><Landing /></main></body>
+</html>
+
+

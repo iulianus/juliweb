@@ -1,0 +1,13 @@
+<form class="contact-form" id="consulta-form" aria-describedby="form-status">
+ <div class="contact-form-row"><label class="contact-form__label" for="nombre">Nombre <span aria-hidden="true">*</span></label><input class="contact-form__field" id="nombre" name="nombre" autocomplete="name" required /></div>
+ <div class="contact-form-row"><label class="contact-form__label" for="email">Email <span aria-hidden="true">*</span></label><input class="contact-form__field" id="email" name="email" type="email" autocomplete="email" required /></div>
+ <div class="contact-form-row"><label class="contact-form__label" for="telefono">Teléfono <span aria-hidden="true">*</span></label><input class="contact-form__field" id="telefono" name="telefono" type="tel" autocomplete="tel" required /></div>
+ <div class="contact-form-row"><label class="contact-form__label" for="consulta">Aquí puedes dejar tu consulta</label><textarea class="contact-form__field" id="consulta" name="consulta" rows="4"></textarea></div>
+ <button class="contact-form__submit" type="submit" disabled>Coordinar consultoría</button>
+ <p id="form-status" role="status" aria-live="polite" hidden></p>
+<noscript><p>El envío del formulario todavía no está disponible.</p></noscript></form>
+<script>
+ import '../scripts/contact.js';
+</script>
+<style>.contact-form__label{display:block}.contact-form__field{display:block}textarea{resize:vertical}#form-status:not([hidden]){margin-top:1rem;font-size:.9rem;color:#1A476C}</style>
+
